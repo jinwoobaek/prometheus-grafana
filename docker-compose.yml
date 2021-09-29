@@ -6,12 +6,12 @@ networks:
 
 services:
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:latest #image
     container_name: prometheus
     volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml # volume 지정
     ports:
-      - 9090:9090
+      - 9090:9090 # port 지정
     networks:
       - monitor-net
 
@@ -19,7 +19,7 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     volumes:
-      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini # grafana.ini 파일 ( 디폴트 값 )
       - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml
     ports:
       - 3000:3000
